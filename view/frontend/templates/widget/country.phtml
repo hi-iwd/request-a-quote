@@ -1,0 +1,20 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Widget\Fields\Country
+ */
+$countries = $block->getCountries();
+?>
+
+<label class="label" title="<?php echo $block->getTitle() ?>" for="<?php echo $block->getHtmlId()?>">
+    <span><?php /* @escapeNotVerified */ echo $block->getLabel() ?></span>
+</label>
+<select <?php echo $block->getValidation() ?>
+        id="<?php echo $block->getHtmlId() ?>"
+        class="iwd_c2q_select_country"
+        title="<?php echo $block->getTitle() ?>"
+        name="<?php echo $block->getName() ?>">
+    <?php foreach ($countries as $country) : ?>
+        <option <?php echo ($block->getDefaultCountry() == $country['value']) ? 'selected="selected"' : '' ?>
+                value="<?php echo $country['value'] ?>"><?php echo $country['label'] ?></option>
+    <?php endforeach; ?>
+</select>

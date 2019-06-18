@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="shortcut_buttons_container">
+        <observer name="iwd_ctq_request_button" instance="IWD\CartToQuote\Observer\AddRequestButton"/>
+        <observer name="iwd_ctq_request_button_on_product_page" instance="IWD\CartToQuote\Observer\CartToQuoteShortcutsObserver"/>
+    </event>
+    <event name="checkout_cart_update_items_before">
+        <observer name="iwd_ctq_block_quote_from_editing" instance="IWD\CartToQuote\Observer\BlockQuoteFromEditing" />
+    </event>
+    <event name="sales_quote_remove_item">
+        <observer name="iwd_ctq_block_quote_from_editing" instance="IWD\CartToQuote\Observer\BlockQuoteFromEditing" />
+    </event>
+    <event name="sales_quote_add_item">
+        <observer name="iwd_ctq_block_quote_from_editing" instance="IWD\CartToQuote\Observer\BlockQuoteFromEditing" />
+    </event>
+    <event name="controller_action_predispatch_b2b_cart_clear">
+        <observer name="iwd_ctq_block_b2b_quote_editing" instance="IWD\CartToQuote\Observer\BlockB2BQuoteFromEditing" />
+    </event>
+    <event name="controller_action_predispatch_b2b_cart_remove">
+        <observer name="iwd_ctq_block_b2b_quote_editing" instance="IWD\CartToQuote\Observer\BlockB2BQuoteFromEditing" />
+    </event>
+    <event name="controller_action_predispatch_b2b_cart_update">
+        <observer name="iwd_ctq_block_b2b_quote_editing" instance="IWD\CartToQuote\Observer\BlockB2BQuoteFromEditing" />
+    </event>
+    <event name="controller_action_predispatch_b2b_cart_add">
+        <observer name="iwd_ctq_block_b2b_quote_editing" instance="IWD\CartToQuote\Observer\BlockB2BQuoteFromEditing" />
+    </event>
+    <event name="controller_action_predispatch_b2b_cart_refresh">
+        <observer name="iwd_ctq_block_b2b_quote_editing" instance="IWD\CartToQuote\Observer\BlockB2BQuoteFromEditing" />
+    </event>
+</config>

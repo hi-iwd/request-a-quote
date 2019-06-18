@@ -1,0 +1,81 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Request\Dialog
+ */
+?>
+
+<div id="iwd_c2q_request_dialog" style="display: none;">
+    <div class="messages" style="display: none;" id="iwd_c2q_error_message">
+        <div class="message-error error message">
+            <div class="message-text"></div>
+        </div>
+    </div>
+    <div id="iwd_c2q_guest_form"
+        data-title="<?php echo __('Request a quote') ?>"
+        class="iwd_c2q_dialog_form">
+        <button title="<?php echo __('Login'); ?>" class="iwd_c2q_open_login_form">
+            <?php echo __('Login'); ?>
+        </button>
+        <button title="<?php echo __('Continue as Guest') ?>" class="iwd_c2q_request_as_guest">
+            <?php echo __('Continue as Guest'); ?>
+        </button>
+    </div>
+    <form id="iwd_c2q_request_quote_form"
+          action="<?php echo $block->getSaveUrl() ?>"
+          data-mage-init='{"validation": {}}'
+          data-title="<?php echo __('Request a quote') ?>"
+          method="post"
+          class="iwd_c2q_dialog_form">
+        <div class="iwd_c2q_fields_container">
+            <?php
+                $fieldsArr = $block->getFields();
+                $isOneColumn = (count($fieldsArr) == 1);
+            ?>
+            <?php foreach ($fieldsArr as $fields) : ?>
+                <div class="<?php echo $isOneColumn ? 'iwd_c2q_fields_full' : 'iwd_c2q_fields_col' ?>">
+                    <?php foreach ($fields as $field) : ?>
+                        <?php $isRequired = (isset($field['required']) && $field['required']) ?>
+                        <div class="field <?php echo $isRequired ? 'required' : '' ?>">
+                            <?php echo $block->getFieldHtml($field); ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="iwd-actions-toolbar">
+            <button class="iwd_c2q_form_button_submit"
+                    id="iwd_c2q_submit_request_button"
+                    value="<?php echo __('Submit') ?>"
+                    name='submit' type='submit'>
+                <?php echo __('Submit') ?>
+            </button>
+            <button class="iwd_c2q_back_to_guest_form" type="button">
+                <?php echo __('Back') ?>
+            </button>
+            <div class="clear"></div>
+        </div>
+    </form>
+
+    <div id="iwd_c2q_loader_wrapper" class="iwd_c2q_loader_wrapper">
+        <div class="iwd_c2q_loader_mask"></div>
+        <div class="iwd_c2q_loader"></div>
+    </div>
+</div>
+<script>
+    require([], function () {
+        iwdC2qRegions = JSON.parse('<?php echo $block->getRegions(); ?>');
+    })
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "IWD_CartToQuote/js/country-region": {
+                "countrySelector": ".iwd_c2q_select_country",
+                "regionContainer": ".iwd_c2q_region_container",
+                "regionIdContainer": ".iwd_c2q_region_id_container"
+            },
+            "IWD_CartToQuote/js/design-form": {}
+        }
+    }
+</script>

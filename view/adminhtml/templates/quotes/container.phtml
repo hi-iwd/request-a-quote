@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Adminhtml\Quotes\Container
+ */
+?>
+
+<form action="<?php echo $this->getUrl('carttoquote/quotes/save') ?>" method="GET">
+    <input type="hidden" name="quote_id" value="<?php echo $block->getQuoteIdFromRequest() ?>">
+    <?php echo $block->getChildHtml('quotes.carttoquote.edit'); ?>
+    <div class="admin__page-section-content">
+        <?php echo $block->getChildHtml('quotes.carttoquote.summary'); ?>
+    </div>
+    <div class="admin__data-grid-pager-wrap page-actions" style="margin-top:30px">
+        <button type="Submit" class="primary">Save & Approve</button>
+    </div>
+</form>

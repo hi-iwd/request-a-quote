@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="IWD_CartToQuote::carttoquote_quotes_index"
+             dependsOnConfig="iwd_cart_to_quote/general/enable"
+             title="Request A Quote" translate="title"
+             module="IWD_CartToQuote" sortOrder="212"
+             parent="Magento_Sales::sales_operation"
+             action="carttoquote/quotes/index"
+             resource="IWD_CartToQuote::carttoquote_quotes_index"/>
+    </menu>
+</config>

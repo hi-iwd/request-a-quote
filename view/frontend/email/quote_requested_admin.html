@@ -1,0 +1,25 @@
+<!--
+-->
+<!--@subject {{trans "New Quote Requested"}} @-->
+<!--@vars {
+"var receiver.name":"Receiver Name",
+"var quote.id":"Quote Number",
+"var store.name":"Store Name",
+} @-->
+
+{{template config_path="design/email/header_template"}}
+<p class="greeting">{{trans "Hello"}} {{var store.name}},</p>
+<p>
+    {{trans "A customer has submitted a new quote request for your review."}}
+    {{trans "You can review all your quote requests by navigating to"}}
+    <b> {{trans "Sales > Request a Quote"}}</b>
+    {{trans "in your Magento admin panel."}}
+</p>
+<p>
+    {{trans "Thanks,"}}
+</p>
+<p>
+    {{trans "B2B Suite by IWD Agency"}}
+</p>
+
+{{template config_path="design/email/footer_template"}}

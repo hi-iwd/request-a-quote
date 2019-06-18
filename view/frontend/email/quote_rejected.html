@@ -1,0 +1,45 @@
+<!--
+-->
+<!--@subject {{trans "Quote Rejected"}} @-->
+<!--@vars {
+"var receiver.name":"Receiver Name",
+"var quote.id":"Quote Number",
+"var store.name":"Store Name",
+} @-->
+
+{{template config_path="design/email/header_template"}}
+<p class="greeting">{{trans "Hello"}} {{var receiver.name}},</p>
+<br/>
+<p>
+    {{trans "Your quote"}}
+    (<a
+        style="color:#006BB4"
+        href="{{var this.getUrl($store,'iwdc2q/customer/quotes/')}}"
+        target="_blank">{{var quote.id}}</a>),
+    {{trans "has been rejected by our team at this time, and we will not be able to provide an estimate."}}
+    {{trans "We apologize for the inconvenience."}}
+    {{trans "Feel free to contact store management for more information regarding the status of your quote."}}
+</p>
+<br/>
+<p>
+    <a href="{{var this.getUrl($store,'customer/account/login/')}}"
+       target="_blank"
+       style="height: 36px;
+        width: 201px;
+        border: 1px solid #006BB4;
+        background-color: #006BB4;
+        text-align: center;
+        display: block;
+        border-radius: 3px;
+        padding-top: 17px;
+        ">
+        <span style="color: #ffffff !important; margin-top: -50%">{{trans "Sign In To Manage Quotes"}}</span>
+    </a>
+</p>
+<br/>
+<p>
+    {{trans "Thanks"}},
+    <br/>
+    {{var store.name}}
+</p>
+{{template config_path="design/email/footer_template"}}

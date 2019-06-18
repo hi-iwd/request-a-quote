@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Widget\Fields\State
+ */
+$countries = $block->getCountries();
+?>
+
+<div class="iwd_c2q_region_id_container" style="display: none;">
+    <label class="label" title="<?php echo $block->getTitle() ?>" for="<?php echo $block->getSelectId()?>">
+        <span><?php /* @escapeNotVerified */ echo $block->getLabel() ?></span>
+    </label>
+    <select
+            id="<?php echo $block->getSelectId() ?>"
+            class="iwd_c2q_select_region_id"
+            <?php echo $block->getValidation() ?>
+            title="<?php echo $block->getTitle() ?>"
+            name="<?php echo $block->getSelectName() ?>">
+    </select>
+</div>
+
+<div class="iwd_c2q_region_container">
+    <label class="label" title="<?php echo $block->getTitle() ?>" for="<?php echo $block->getHtmlId()?>">
+        <span><?php /* @escapeNotVerified */ echo $block->getLabel() ?></span>
+    </label>
+    <input type="text"
+        <?php echo $block->getValidation() ?>
+        id="<?php echo $block->getHtmlId() ?>"
+        name="<?php echo $block->getName() ?>"
+        title="<?php echo $block->getTitle() ?>"
+        placeholder="<?php echo $block->getPlaceholder() ?>"/>
+</div>

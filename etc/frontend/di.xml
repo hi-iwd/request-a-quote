@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Checkout\Controller\Cart\UpdatePost" type="IWD\CartToQuote\Controller\Cart\UpdatePost" />
+    <preference for="Magento\Checkout\Controller\Cart\Add" type="IWD\CartToQuote\Controller\Cart\Add" />
+    <preference for="Magento\Checkout\Controller\Cart\Delete" type="IWD\CartToQuote\Controller\Cart\Delete" />
+    <preference for="Magento\Checkout\Controller\Cart\Configure" type="IWD\CartToQuote\Controller\Cart\Configure" />
+    <preference for="Magento\Sales\Controller\Order\Reorder" type="IWD\CartToQuote\Controller\Sales\Order\Reorder" />
+    <preference for="Magento\Sales\Controller\Guest\Reorder" type="IWD\CartToQuote\Controller\Sales\Guest\Reorder" />
+    <preference for="Magento\Wishlist\Controller\Index\Cart" type="IWD\CartToQuote\Controller\Wishlist\Index\Cart" />
+    <preference for="Magento\Wishlist\Controller\Index\Fromcart" type="IWD\CartToQuote\Controller\Wishlist\Index\Fromcart" />
+    <preference for="Magento\Wishlist\Model\ItemCarrier" type="IWD\CartToQuote\Model\Wishlist\ItemCarrier" />
+    <type name="IWD\CartToQuote\Block\Request\Button">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="template" xsi:type="string">IWD_CartToQuote::request/button.phtml</item>
+                <item name="alias" xsi:type="string">iwd.ctq.cart</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

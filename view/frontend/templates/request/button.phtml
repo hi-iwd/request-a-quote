@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Request\Button
+ */
+?>
+<button type="submit"
+        title="<?php echo __('Request a Quote') ?>"
+        style="display:none"
+        class="iwd-request-quote-button action primary checkout">
+    <span><?php echo __('Request a Quote') ?></span>
+</button>
+<script type="text/x-magento-init">
+    {
+        ".iwd-request-quote-button": {
+            "IWD_CartToQuote/js/modal-form": {
+                "userInfoUrl" : "<?php echo $block->getUserInfoUrl() ?>",
+                "checkUserEmailUrl" : "<?php echo $block->getCheckUserEmailUrl() ?>"
+            }
+        }
+    }
+</script>

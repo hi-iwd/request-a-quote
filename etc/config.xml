@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <iwd_cart_to_quote>
+            <general>
+                <enable>0</enable>
+                <button_type>1</button_type>
+                <success_message>Your quote was successfully sent to our system</success_message>
+                <expiration_date>30</expiration_date>
+            </general>
+        </iwd_cart_to_quote>
+    </default>
+</config>

@@ -1,0 +1,33 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Widget\Fields\Suffix
+ */
+$suffixOptions = $block->getSuffixOptions();
+?>
+
+<label title="<?php echo $block->getTitle() ?>" for="<?php echo $block->getHtmlId() ?>">
+    <?php echo $block->getLabel() ?>
+</label>
+
+<?php if ($suffixOptions) : ?>
+    <?php array_unshift($suffixOptions, __('Please select a suffix')); ?>
+    <select id="<?php echo $block->getHtmlId() ?>"
+        title="<?php echo $block->getTitle() ?>"
+        <?php echo $block->getValidation() ?>
+        name="<?php echo $block->getName() ?>">
+
+        <?php foreach ($suffixOptions as $key => $value) : ?>
+            <option value="<?php echo($key === 0 ? '' : $key) ?>">
+                <?php echo $value ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+<?php else : ?>
+    <input type="text"
+        <?php echo $block->getValidation() ?>
+           id="<?php echo $block->getHtmlId() ?>"
+           name="<?php echo $block->getName() ?>"
+           title="<?php echo $block->getTitle() ?>"
+           placeholder="<?php echo $block->getPlaceholder() ?>"
+           value="<?php echo $block->getValue() ?>" />
+<?php endif; ?>

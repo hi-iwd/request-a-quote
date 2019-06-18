@@ -1,0 +1,20 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Widget\Fields\Dob
+ */
+?>
+<?php
+$fieldCssClass = 'date field-' . $block->getHtmlId();
+$fieldCssClass .= $block->isRequired() ? ' required' : '';
+?>
+<div class="<?php /* @escapeNotVerified */ echo $fieldCssClass; ?>">
+    <label class="label" title="<?php echo $block->getTitle() ?>" for="<?php echo $block->getHtmlId()?>">
+        <span><?php /* @escapeNotVerified */ echo $block->getLabel() ?></span>
+    </label>
+    <div class="control customer-dob">
+        <?php echo $block->getFieldHtml(); ?>
+        <?php if ($_message = $block->getAdditionalDescription()) : ?>
+            <div class="note"><?php /* @escapeNotVerified */ echo $_message; ?></div>
+        <?php endif; ?>
+    </div>
+</div>

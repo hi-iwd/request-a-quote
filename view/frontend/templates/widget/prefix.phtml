@@ -1,0 +1,33 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Widget\Fields\Prefix
+ */
+
+$prefixOptions = $block->getPrefixOptions();
+?>
+
+<label class="label" title="<?php echo $block->getTitle() ?>" for="<?php echo $block->getHtmlId()?>">
+    <span><?php /* @escapeNotVerified */ echo $block->getLabel() ?></span>
+</label>
+
+<?php if ($prefixOptions) : ?>
+    <?php array_unshift($prefixOptions, __('Please select a prefix')); ?>
+    <select <?php echo $block->getValidation() ?>
+            id="<?php echo $block->getHtmlId() ?>"
+            title="<?php echo $block->getTitle() ?>"
+            name="<?php echo $block->getName() ?>">
+        <?php foreach ($prefixOptions as $key => $value) : ?>
+            <option value="<?php echo($key === 0 ? '' : $key) ?>">
+                <?php echo $value ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+<?php else : ?>
+    <input type="text"
+        <?php echo $block->getValidation() ?>
+           id="<?php echo $block->getHtmlId() ?>"
+           name="<?php echo $block->getName() ?>"
+           title="<?php echo $block->getTitle() ?>"
+           placeholder="<?php echo $block->getPlaceholder() ?>"
+           value="<?php echo $block->getValue() ?>" />
+<?php endif; ?>

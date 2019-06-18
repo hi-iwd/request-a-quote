@@ -1,0 +1,96 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Adminhtml\Quotes\Grid
+ */
+?>
+<?php if ($block->isConnectionError()) : ?>
+    <h1><?php echo __('Unable to Connect') ?></h1>
+    <div>
+        <p><?php echo __('We have some issue with connection to API Server.') ?></p>
+        <p><?php echo __('Try to reload the page if it doesn\'t help please, let admin know about this issue.') ?></p>
+        <p><?php echo __('Thank you for understanding.') ?></p>
+    </div>
+<?php else : ?>
+    <iframe id='adminQuoteFrame' name='adminQuoteFrame' src='<?php echo $block->getGridUrl() ?>' scrolling="no"
+            style="border:none; width:1px; *width:100%; min-width:100%; position:relative; frameborder:0; overflow:hidden;">
+        <?php __('Sorry, your browser does not support iframe') ?>
+    </iframe>
+    <div id="iwd_c2q_iframe_loader_wrapper" class="iwd_c2q_loader_wrapper">
+        <div class="iwd_c2q_loader_mask"></div>
+        <div class="iwd_c2q_loader"></div>
+    </div>
+    <script type="text/javascript">
+        require(
+            [
+                'jquery',
+                'IWD_CartToQuote/js/helper/url',
+                'IWD_CartToQuote/js/helper/base64'
+            ],
+            function ($, urlHelper, base64) {
+                $(document).ready(function () {
+                    var iframeResize = function (event) {
+                        var frame = document.getElementById('adminQuoteFrame');
+                        if (frame && event.data.iwdC2QiFrameHeight) {
+                            frame.style.height = event.data.iwdC2QiFrameHeight + "px";
+                            $('#iwd_c2q_iframe_loader_wrapper').hide();
+                        }
+                    };
+
+                    var changeUrl = function (event) {
+                        if (event.data.iwdC2QiFramePage) {
+                            var pathname = base64.encode(event.data.iwdC2QiFramePage);
+                            var url = window.location.href;
+                            url = urlHelper.setUrlParam(url, 'p', pathname);
+                            if (window.location.href !== url) {
+                                window.history.pushState('', '', url);
+                            }
+                        } else if (event.data.iwdC2QiFrameLoadPage) {
+                            var url = event.data.iwdC2QiFrameLoadPage;
+                            var url_array = url.split("?");
+                            var controller_path = url_array[0];
+                            var url_params = url_array[1];
+
+                            $.ajax({
+                                url: '<?php echo $this->getUrl('carttoquote/quotes/ajaxurlbuilder') ?>',
+                                data: {controller_path: controller_path, url_params: url_params},
+                                type: "POST",
+                                dataType: 'json',
+                                success: function (result) {
+                                    window.location.href = result;
+                                }
+                            });
+                        }
+                    };
+
+                    var changeQuoteStatus = function (event) {
+                        if (event.data.iwdQuoteNewStatus && event.data.iwdQuoteId) {
+                            $.ajax({
+                                url: '<?php echo $this->getUrl('carttoquote/quotes/changequotestatus') ?>',
+                                data: {
+                                    new_status: event.data.iwdQuoteNewStatus,
+                                    quote_id: event.data.iwdQuoteId,
+                                },
+                                type: "POST",
+                                dataType: 'json',
+                                success: function (result) {
+                                }
+                            });
+                        }
+                    };
+
+                    if (window.addEventListener) {
+                        window.addEventListener("message", iframeResize, false);
+                        window.addEventListener("message", changeUrl, false);
+                        window.addEventListener("message", changeQuoteStatus, false);
+                    } else if (window.attachEvent) {
+                        window.attachEvent("onmessage", iframeResize);
+                        window.attachEvent("onmessage", changeUrl);
+                        window.attachEvent("onmessage", changeQuoteStatus);
+                    }
+                });
+            }
+        );
+    </script>
+<?php endif; ?>
+
+

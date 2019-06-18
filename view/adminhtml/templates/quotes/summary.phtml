@@ -1,0 +1,35 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Adminhtml\Quotes\Summary
+ */
+?>
+
+<div class="admin__page-section-item order-totals">
+    <div class="admin__page-section-item-title">
+        <span class="title">Summary</span>
+    </div>
+    <table class="data-table admin__table-secondary order-subtotal-table">
+        <tbody>
+            <tr class="col-0">
+                <td class="label">Subtotal</td>
+                <td><span class="price"><?php echo $block->getFormatedQuoteSubtotal()?></span></td>
+            </tr>
+            <tr class="col-0">
+                <td class="label">Discount</td>
+                <td><span class="price">-<?php echo $block->getFormatedQuoteDiscount()?></span></td>
+            </tr>
+            <tr class="col-0">
+                <td class="label">Shipping</td>
+                <td><span class="price"><?php echo $block->getFormatedQuoteShippingAmount()?></span></td>
+            </tr>
+            <tr class="col-0">
+                <td class="label">Tax</td>
+                <td><span class="price"><?php echo $block->getFormatedQuoteTaxAmount()?></span></td>
+            </tr>
+            <tr class="col-0">
+                <td class="label"><strong>Grand Total</strong></td>
+                <td><span class="price"><strong><?php echo $block->getFormatedQuoteGrandTotal()?></strong></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

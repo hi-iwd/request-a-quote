@@ -1,0 +1,155 @@
+#iwd_c2q_fields_container, #iwd_c2q_statuses_container {
+  font-family: 'Open Sans';
+  tbody {
+    tr {
+      padding: 0;
+      border: 0;
+      border-bottom: 2px solid #fff;
+      background-color: #f1f1f1;
+      position: relative;
+      text-align: left;
+      cursor: pointer;
+      &.iwd_c2q_native_settings {
+        td {
+          &.iwd_c2q_settings_enable {
+            .admin__actions-switch-label.disabled {
+              opacity: 0.6;
+            }
+          }
+          &.iwd_c2q_settings_delete {
+            .iwd_c2q_settings_delete_icon {
+              &:before {
+                color: #ababab;
+              }
+            }
+          }
+        }
+      }
+      td {
+        vertical-align: middle;
+        padding: 10px 25px 10px 0;
+        &.iwd_c2q_settings_sort {
+          width: 9px;
+          .iwd_c2q_settings_sort_icon {
+            position: relative;
+            &:before {
+              -webkit-font-smoothing: antialiased;
+              font-size: 14px;
+              line-height: inherit;
+              content: '\e617';
+              font-family: 'Admin Icons';
+              vertical-align: middle;
+              display: block;
+              font-weight: normal;
+              overflow: hidden;
+              speak: none;
+              text-align: center;
+              color: #666666;
+            }
+          }
+        }
+        &.iwd_c2q_settings_enable {
+          width: 38px;
+          .admin__actions-switch-text:before {
+            padding-left: 38px;
+          }
+        }
+        &.iwd_c2q_settings_required {
+          width: 70px;
+        }
+        &.iwd_c2q_settings_delete {
+          width: 18px;
+          .iwd_c2q_settings_delete_icon {
+            position: relative;
+            &:before {
+              content: '\e630';
+              font-size: 18px;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Admin Icons';
+              font-style: normal;
+              font-weight: normal;
+              line-height: 1;
+              display: block;
+              width: 18px;
+              speak: none;
+              color: #666666;
+            }
+          }
+        }
+        &.iwd_c2q_settings_color {
+          position: relative;
+          input {
+            padding-right: 25px;
+            padding-left: 25px;
+            color: #303030;
+          }
+          &:before {
+            content: '#';
+            color: #303030;
+            display: block;
+            width: 12px;
+            height: 12px;
+            position: relative;
+            top: 19px;
+            left: 12px;
+            border-radius: 10px;
+            float: left;
+          }
+          span {
+            display: block;
+            width: 12px;
+            height: 12px;
+            position: relative;
+            top: -22px;
+            left: -12px;
+            border-radius: 10px;
+            float: right;
+          }
+        }
+        &:first-child {
+          padding-left: 10px;
+        }
+        &:last-child {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+  thead {
+    tr {
+      td {
+        padding: 10px 25px 10px 0;
+        font-weight: bold;
+      }
+    }
+  }
+  tfoot {
+    tr {
+      td {
+        padding: 10px 25px 10px 0;
+        .iwd_c2q_settings_add_new {
+          font-size: 15px;
+          color: #008bdb;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.carttoquote-quotes-index .page-title {
+  display:none;
+}
+
+#adminQuoteFrame {
+  border: none;
+  width: 100%;
+  min-width: 100%;
+  position: relative;
+  frameborder: 0;
+  overflow: hidden;
+  background-color: #FFFFFF;
+}

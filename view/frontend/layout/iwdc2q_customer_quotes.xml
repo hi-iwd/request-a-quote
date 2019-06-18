@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="IWD\CartToQuote\Block\Customer\Quotes\Grid" name="iwdc2q.customer.quotes" template="IWD_CartToQuote::customer/quotes/grid.phtml" cacheable="false"/>
+            <block class="Magento\Customer\Block\Account\Dashboard" name="customer.account.link.back" template="Magento_Customer::account/link/back.phtml" cacheable="false"/>
+        </referenceContainer>
+        <referenceBlock name="page.main.title" display="false"/>
+    </body>
+</page>

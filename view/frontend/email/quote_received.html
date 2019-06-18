@@ -1,0 +1,44 @@
+<!--
+-->
+<!--@subject {{trans "Quote Received"}} @-->
+<!--@vars {
+"var receiver.name":"Receiver Name",
+"var quote.id":"Quote Number",
+"var store.name":"Store Name",
+} @-->
+
+{{template config_path="design/email/header_template"}}
+<p class="greeting">{{trans "Hello"}} {{var receiver.name}},</p>
+<br/>
+<p>
+    {{trans "We’ve recieved your quote request"}}
+    (<a
+        style="color:#006BB4"
+        href="{{var this.getUrl($store,'iwdc2q/customer/quotes/')}}"
+        target="_blank">{{var quote.id}}</a>),
+    {{trans "and our team has begun reviewing your items in order to build your personalized quote."}}
+    {{trans "You should be receiving an estimate from us soon, so keep an eye on your email for further updates."}}
+</p>
+<br/>
+<p>
+    <a href="{{var this.getUrl($store,'customer/account/login/')}}"
+       target="_blank"
+       style="height: 36px;
+        width: 201px;
+        border: 1px solid #006BB4;
+        background-color: #006BB4;
+        text-align: center;
+        display: block;
+        border-radius: 1px;
+        padding-top: 17px;
+        ">
+        <span style="color: #ffffff !important; margin-top: -50%">{{trans "Sign In Manage Quotes"}}</span>
+    </a>
+</p>
+<br/>
+<p>
+    {{trans "Thanks"}},
+    <br/>
+    {{var store.name}}
+</p>
+{{template config_path="design/email/footer_template"}}

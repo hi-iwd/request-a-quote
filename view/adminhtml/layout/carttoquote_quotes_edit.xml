@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="IWD\CartToQuote\Block\Adminhtml\Quotes\Container" template="IWD_CartToQuote::quotes/container.phtml">
+                <block class="IWD\CartToQuote\Block\Adminhtml\Quotes\Edit" name="quotes.carttoquote.edit"/>
+                <block class="IWD\CartToQuote\Block\Adminhtml\Quotes\Summary" name="quotes.carttoquote.summary" template="IWD_CartToQuote::quotes/summary.phtml"/>
+            </block>
+        </referenceContainer>
+    </body>
+</layout>

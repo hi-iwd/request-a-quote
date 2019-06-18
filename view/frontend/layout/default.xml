@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="IWD_CartToQuote::css/select2.min.css"/>
+    </head>
+    <referenceContainer name="before.body.end">
+        <block class="IWD\CartToQuote\Block\Request\Dialog" ifconfig="iwd_cart_to_quote/general/enable" name="quote.request.dialog.placeholder" template="IWD_CartToQuote::request/dialog.phtml" />
+        <block class="IWD\CartToQuote\Block\Request\ButtonScript" template="IWD_CartToQuote::button-script.phtml" name="button-script-js"/>
+    </referenceContainer>
+    <body>
+        <referenceContainer name="minicart.addons">
+            <block class="IWD\CartToQuote\Block\Request\Minicart\Button" ifconfig="iwd_cart_to_quote/general/enable" name="quote.request.dialog.minicart.placeholder" template="IWD_CartToQuote::request/button/minicart.phtml">
+                <block class="IWD\CartToQuote\Block\Request\Button" ifconfig="iwd_cart_to_quote/general/enable" name="quote.request.minicart.button" template="IWD_CartToQuote::request/button.phtml" />
+            </block>
+        </referenceContainer>
+    </body>
+</page>

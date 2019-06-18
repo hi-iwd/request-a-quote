@@ -1,0 +1,40 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Quote\Share\View
+ */
+?>
+
+<iframe id='customerQuoteFrame' name='customerQuoteFrame' src='<?php echo $block->getQuoteUrl() ?>' scrolling="no"
+        style="border:none; width:1px; *width:100%; min-width:100%; position:relative; frameborder:0; overflow:hidden;">
+    <?php __('Sorry, your browser does not support iframe') ?>
+</iframe>
+
+<div id="iwd_c2q_iframe_loader_wrapper" class="iwd_c2q_loader_wrapper">
+    <div class="iwd_c2q_loader_mask"></div>
+    <div class="iwd_c2q_loader"></div>
+</div>
+<script type="text/javascript">
+    require(
+        [
+            'jquery'
+        ],
+        function($) {
+            $(document).ready(function () {
+                var iframeResize = function (event) {
+                    var frame = document.getElementById('customerQuoteFrame');
+                    if (frame && event.data.iwdC2QiFrameHeight) {
+                        frame.style.height = event.data.iwdC2QiFrameHeight + "px";
+                        $('#iwd_c2q_iframe_loader_wrapper').hide();
+                    }
+                };
+
+                if (window.addEventListener) {
+                    window.addEventListener("message", iframeResize, false);
+                } else if (window.attachEvent) {
+                    window.attachEvent("onmessage", iframeResize);
+                }
+            });
+        }
+    );
+</script>
+

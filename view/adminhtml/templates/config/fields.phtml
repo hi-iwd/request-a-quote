@@ -1,0 +1,181 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Adminhtml\System\Config\Renderer\Fields
+ */
+?>
+<?php
+$fields = $block->getFields();
+$fieldTypes = \IWD\CartToQuote\Model\Request\Form\Fields::getFieldTypes();
+?>
+<div id="iwd_c2q_fields_container" class="iwd_c2q_settings_container">
+    <table>
+        <thead>
+        <tr>
+            <td></td>
+            <td><?php echo __('Name'); ?></td>
+            <td><?php echo __('Function'); ?></td>
+            <td><?php echo __('Required?'); ?></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($fields as $field) { ?>
+            <tr class="<?php if ($field['native']) { ?>iwd_c2q_native_settings<?php } ?> ">
+                <td class="iwd_c2q_settings_sort" title="<?php echo __('Sort'); ?>">
+                    <div class="iwd_c2q_settings_sort_icon"></div>
+                </td>
+                <td class="iwd_c2q_settings_name" title="<?php echo __('Name'); ?>">
+                    <input type="hidden"
+                           value="<?php echo $field['id']; ?>"
+                           name="iwd_c2q_fields[<?php echo $field['id'] ?>][id]"/>
+                    <input type="text" class="required-entry"
+                           placeholder="<?php echo __('Field name'); ?>"
+                           title="<?php echo __('Field name'); ?>"
+                           <?php if ($field['native']){ ?>readonly="readonly"<?php } ?>
+                           name="iwd_c2q_fields[<?php echo $field['id'] ?>][name]"
+                           value="<?php echo $field['name']; ?>"/>
+                    <input type="hidden"
+                           value="<?php echo $field['native'] ?>"
+                           name="iwd_c2q_fields[<?php echo $field['id'] ?>][native]"/>
+                </td>
+                <td class="iwd_c2q_settings_function" title="<?php echo __('Function'); ?>">
+                    <?php if ($field['native']) { ?>
+                        <input type="hidden"
+                               value="<?php echo $field['code'] ?>"
+                               name="iwd_c2q_fields[<?php echo $field['id'] ?>][code]"/>
+                    <?php } ?>
+                    <select
+                        <?php if ($field['native']){ ?>disabled="disabled"<?php } else { ?>
+                        name="iwd_c2q_fields[<?php echo $field['id'] ?>][code]"
+                    <?php } ?>
+                        title="<?php echo __('Select field role'); ?>">
+                        <?php foreach ($fieldTypes as $key => $fieldType) { ?>
+                            <option
+                                <?php echo $field['code'] === $fieldType['code'] ? 'selected' : '' ?>
+                                    value="<?php echo $fieldType['code'] ?>">
+                                <?php echo $fieldType['name']; ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </td>
+                <td class="iwd_c2q_settings_required">
+                    <div class="admin__field admin__field-option">
+                        <input type="hidden"
+                               value="<?php echo $field['required']; ?>"
+                               name="iwd_c2q_fields[<?php echo $field['id'] ?>][required]"/>
+                        <input type="checkbox"
+                               class="admin__control-checkbox iwd_c2q_settings_custom_checkbox"
+                               value="1"
+                               title="<?php echo __('Required?') ?>"
+                            <?php echo((int)$field['required'] ? 'checked="checked"' : ''); ?>
+                               <?php if ($field['native']){ ?>disabled="disabled"<?php } ?>
+                               id="iwd_c2q_fields_.<?php echo $field['id'] ?>._required"/>
+                        <label class="admin__field-label <?php if ($field['native']) { ?>disabled<?php } ?>"
+                               for="iwd_c2q_fields_.<?php echo $field['id'] ?>._required"></label>
+                    </div>
+                </td>
+                <td class="iwd_c2q_settings_enable" title="<?php echo __('Enable/Disable'); ?>">
+                    <div class="admin__actions-switch" data-role="switcher">
+                        <input type="hidden"
+                               value="<?php echo $field['enable']; ?>"
+                               name="iwd_c2q_fields[<?php echo $field['id'] ?>][enable]"/>
+                        <input type="checkbox" class="admin__actions-switch-checkbox iwd_c2q_settings_custom_checkbox"
+                               value="1"
+                               <?php if ($field['native']){ ?>disabled="disabled"<?php } ?>
+                               id="iwd_c2q_fields_.<?php echo $field['id'] ?>._enable"
+                            <?php echo((int)$field['enable'] ? 'checked="checked"' : ''); ?>/>
+                        <label class="admin__actions-switch-label <?php if ($field['native']) { ?>disabled<?php } ?>"
+                               for="iwd_c2q_fields_.<?php echo $field['id'] ?>._enable">
+                            <span class="admin__actions-switch-text"></span>
+                        </label>
+                    </div>
+                </td>
+                <td class="iwd_c2q_settings_delete" title="<?php echo __('Delete'); ?>">
+                    <div class="iwd_c2q_settings_delete_icon"></div>
+                    <input
+                            value="0"
+                            name="iwd_c2q_fields[<?php echo $field['id'] ?>][is_deleted]"
+                            type="hidden"/>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td></td>
+            <td colspan="5">
+                <div class="iwd_c2q_settings_add_new">
+                    <?php echo __('Add Field'); ?>
+                </div>
+            </td>
+        </tr>
+        <tr style="display: none;">
+            <td class="iwd_c2q_settings_sort" title="<?php echo __('Sort'); ?>">
+                <div class="iwd_c2q_settings_sort_icon"></div>
+            </td>
+            <td class="iwd_c2q_settings_name" title="<?php echo __('Name'); ?>">
+                <input type="text" class="required-entry"
+                       disabled="disabled"
+                       placeholder="<?php echo __('Field name'); ?>"
+                       title="<?php echo __('Field name'); ?>"
+                       name="iwd_c2q_fields[new][iwd_c2q_unique_id][name]"/>
+                <input type="hidden"
+                       value="0"
+                       disabled="disabled"
+                       name="iwd_c2q_fields[new][iwd_c2q_unique_id][native]"/>
+            </td>
+            <td class="iwd_c2q_settings_function" title="<?php echo __('Function'); ?>">
+                <select
+                        name="iwd_c2q_fields[new][iwd_c2q_unique_id][code]"
+                        disabled="disabled"
+                        title="<?php echo __('Select field role'); ?>">
+                    <?php foreach ($fieldTypes as $key => $fieldType) { ?>
+                        <option value="<?php echo $fieldType['code'] ?>">
+                            <?php echo $fieldType['name']; ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </td>
+            <td class="iwd_c2q_settings_required">
+                <div class="admin__field admin__field-option">
+                    <input type="hidden"
+                           value="1"
+                           disabled="disabled"
+                           name="iwd_c2q_fields[new][iwd_c2q_unique_id][required]"/>
+                    <input type="checkbox"
+                           class="admin__control-checkbox iwd_c2q_settings_custom_checkbox"
+                           value="1"
+                           title="<?php echo __('Required?') ?>"
+                           disabled="disabled"
+                           checked="checked"/>
+                    <label class="admin__field-label"></label>
+                </div>
+            </td>
+            <td class="iwd_c2q_settings_enable" title="<?php echo __('Enable/Disable'); ?>">
+                <div class="admin__actions-switch" data-role="switcher">
+                    <input type="hidden"
+                           value="1"
+                           disabled="disabled"
+                           name="iwd_c2q_fields[new][iwd_c2q_unique_id][enable]"/>
+                    <input type="checkbox" class="admin__actions-switch-checkbox iwd_c2q_settings_custom_checkbox"
+                           value="1"
+                           disabled="disabled"
+                           checked="checked"/>
+                    <label class="admin__actions-switch-label">
+                        <span class="admin__actions-switch-text"></span>
+                    </label>
+                </div>
+            </td>
+            <td class="iwd_c2q_settings_delete" title="<?php echo __('Delete'); ?>">
+                <div class="iwd_c2q_settings_delete_icon"></div>
+                <input
+                        value="0"
+                        disabled="disabled"
+                        name="iwd_c2q_fields[new][iwd_c2q_unique_id][is_deleted]"
+                        type="hidden"/>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>

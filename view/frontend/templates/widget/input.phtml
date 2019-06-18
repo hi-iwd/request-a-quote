@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block \IWD\CartToQuote\Block\Widget\Fields\Input
+ */
+?>
+
+<label class="label" title="<?php echo $block->getTitle() ?>" for="<?php echo $block->getHtmlId()?>">
+    <span><?php /* @escapeNotVerified */ echo $block->getLabel() ?></span>
+</label>
+<input type="text"
+    <?php echo $block->getValidation() ?>
+    id="<?php echo $block->getHtmlId() ?>"
+    name="<?php echo $block->getName() ?>"
+    title="<?php echo $block->getTitle() ?>"
+    placeholder="<?php echo $block->getPlaceholder() ?>"
+    value="<?php echo $block->getValue() ?>" />
